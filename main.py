@@ -139,26 +139,26 @@ def run_Jonny():
     elif 'photo' in Command:
         print('Opening your desired photo')
         talk('Opening your desired photo')
-        file_path = 'D:\Programming\Python\Dictation-Software-Virtual-Assistant\Assistant.jpg'
+        file_path = '/Assets/Assistant.jpg'
         image = Image.open(file_path)
         image.show()
 
     elif 'pdf' in Command:
         print('Opening your desired pdf file')
         talk('Opening your desired pdf file')
-        file_path = r'D:\Programming\Python\Dictation-Software-Virtual-Assistant\Assistant.pdf'
+        file_path = r'/Assets/Assistant.pdf'
         os.startfile(file_path)
 
     elif 'video' in Command:
         print('Opening your desired video file')
         talk('Opening your desired video file')
-        file_path = r'D:\Programming\Python\Dictation-Software-Virtual-Assistant\Assistant.mp4'
+        file_path = r'/Assets/Assistant.mp4'
         os.startfile(file_path)
 
     elif 'powerpoint file' in Command:
         print('Opening powerpoint file file')
         talk('Opening powerpoint file file')
-        file_path = r'D:\Programming\Python\Dictation-Software-Virtual-Assistant\Assistant.pptx'
+        file_path = r'/Assets/Assistant.pptx'
         os.startfile(file_path)
 
     elif 'word' in Command:
@@ -194,5 +194,34 @@ def run_Jonny():
         talk('Please click the run button and say the Command again.')
 
 # Call under while loop
-while True:
-    run_Jonny()
+# while True:
+#     run_Jonny()
+
+#tkinter is a GUI of python
+
+root = Tk()
+
+root.title('Virtual Assistant')
+root.geometry('320x320')
+
+#img = ImageTk.PhotoImage(Image.open('Assistant.jpg'))
+#panel = Label(root, image=img)
+#panel.pack(side='right', fill='both', expand='no')
+
+userText = StringVar()
+
+userText.set('Welcome to our Virtual World!')
+userFrame = LabelFrame(root, text='', font=('Railways', 20, 'bold'))
+userFrame.pack(fill='both', expand='yes')
+
+top = Message(userFrame, textvariable=userText, bg='light blue', fg='dark blue')
+top.config(font=("Tahoma", 25, 'bold'))
+top.pack(side='top', fill='both', expand='yes')
+
+btn1 = Button(root, text='Run', font=('Tahoma', 18, 'bold'), bg='light green', fg='Green', command=run_Jonny)
+btn1.pack(fill='x', expand='no')
+
+btn2 = Button(root, text='Close', font=('Tahoma', 18, 'bold'), bg='light yellow', fg='red', command=root.destroy)
+btn2.pack(fill='x', expand='no')
+
+root.mainloop()
